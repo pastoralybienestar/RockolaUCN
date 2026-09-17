@@ -142,7 +142,7 @@
 
     <main id="main-content" class="container mx-auto px-4 py-8 flex flex-col gap-8 max-w-7xl">
         
-        <!-- Cabecera: Mensaje Inicial Mejorado -->
+        <!-- Cabecera -->
         <header class="w-full text-center glass-panel rounded-[2rem] p-8 md:p-12 relative z-10">
             <div class="absolute -top-6 -left-6 text-6xl opacity-20">✨</div>
             <div class="absolute -bottom-4 -right-4 text-5xl opacity-20">💖</div>
@@ -185,9 +185,16 @@
                         </div>
                         <div id="player" class="z-0"></div>
                     </div>
+                    
+                    <!-- Fallback link por si YouTube bloquea la inserción (embed) -->
+                    <div class="mt-4 text-center h-6">
+                        <a id="btn-open-yt" href="#" target="_blank" class="hidden text-sm text-rose-500 hover:text-rose-700 underline decoration-dotted transition-all font-medium">
+                            <i class="fab fa-youtube mr-1"></i>¿No se reproduce aquí? Ábrela directo en YouTube
+                        </a>
+                    </div>
 
                     <!-- Controles de Reproducción -->
-                    <div class="flex justify-center items-center gap-6 mt-8">
+                    <div class="flex justify-center items-center gap-6 mt-4">
                         <button id="btn-shuffle" class="btn-action text-gray-400 hover:text-rose-500 text-xl" title="Reproducción Aleatoria">
                             <i class="fas fa-random"></i>
                         </button>
@@ -269,13 +276,13 @@
         // --- BASE DE DATOS AMPLIADA: 50 CANCIONES ---
         const songs = [
             // AMOR (Actual y pop)
-            { id: "1", title: "Robarte un Beso", artist: "Carlos Vives, Sebastián Yatra", ytId: "Mtau4v6foHA", category: "amor" },
-            { id: "2", title: "Por Primera Vez", artist: "Camilo, Evaluna Montaner", ytId: "91wEeeP0uPE", category: "amor" },
+            { id: "1", title: "Robarte un Beso", artist: "Carlos Vives, Sebastián Yatra", ytId: "banHgHrAsOE", category: "amor" }, // Cambiado a video con letra
+            { id: "2", title: "Por Primera Vez", artist: "Camilo, Evaluna Montaner", ytId: "MjpfX_ryXak", category: "amor" }, // Cambiado a video con letra
             { id: "3", title: "Entra en mi vida", artist: "Sin Bandera", ytId: "-XwLGlO-a3M", category: "amor" },
-            { id: "4", title: "Solamente Tú", artist: "Pablo Alborán", ytId: "F0rwOsAteVk", category: "amor" },
-            { id: "5", title: "Colgando en tus manos", artist: "Carlos Baute, Marta Sánchez", ytId: "qExd-3oCTl4", category: "amor" },
+            { id: "4", title: "Solamente Tú", artist: "Pablo Alborán", ytId: "1Owuz06DV2Q", category: "amor" }, // Cambiado a video con letra
+            { id: "5", title: "Colgando en tus manos", artist: "Carlos Baute, Marta Sánchez", ytId: "Flj6SwkUqvQ", category: "amor" }, // Cambiado a video con letra
             { id: "6", title: "Te Amo", artist: "Franco De Vita", ytId: "A5P_R1bXnko", category: "amor" },
-            { id: "31", title: "Océano", artist: "Pablo Alborán", ytId: "x0cQGndP7rA", category: "amor" },
+            { id: "31", title: "Ocean", artist: "Karol G", ytId: "wmox3Sxn8BU", category: "amor" }, // Corregido artista y cambiado a video con letra
             { id: "32", title: "Tutu", artist: "Camilo, Pedro Capó", ytId: "X_xENHe-GJA", category: "amor" },
             { id: "33", title: "Te Esperaba", artist: "Carlos Rivera", ytId: "5_zV9f0yMFE", category: "amor" },
             { id: "34", title: "Perfecta", artist: "Reik, Maluma", ytId: "3q98d9J7B3Q", category: "amor" },
@@ -352,6 +359,7 @@
         const nowPlayingArtist = document.getElementById('now-playing-artist');
         const filterBtns = document.querySelectorAll('.filter-btn');
         const btnShare = document.getElementById('btn-share');
+        const btnOpenYt = document.getElementById('btn-open-yt');
         const searchInput = document.getElementById('search-input');
         const noResultsMsg = document.getElementById('no-results');
         const songCountEl = document.getElementById('song-count');
@@ -371,9 +379,20 @@
                     'modestbranding': 1 // Menos logos de YT
                 },
                 events: {
-                    'onStateChange': onPlayerStateChange
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
                 }
             });
+        }
+
+        // Manejo de errores (En caso de que el video tenga bloqueo de inserción)
+        function onPlayerError(event) {
+            // Error 101 o 150 significa que el dueño del video prohibió insertarlo en sitios externos.
+            if(event.data === 150 || event.data === 101) {
+                // Hacer el botón de "Abrir en YouTube" más notorio y visible
+                btnOpenYt.classList.add('animate-pulse', 'text-rose-700');
+                btnOpenYt.innerHTML = `<i class="fas fa-exclamation-circle mr-1"></i>YouTube bloquea este video aquí. ¡Ábrelo directamente!`;
+            }
         }
 
         // Manejo de estados del reproductor
@@ -382,6 +401,9 @@
                 isPlaying = true; 
                 updatePlayPauseButton(); 
                 updatePlaylistUI();
+                // Si está reproduciendo sin problema, asegurarse que el texto sea el normal
+                btnOpenYt.classList.remove('animate-pulse', 'text-rose-700');
+                btnOpenYt.innerHTML = `<i class="fab fa-youtube mr-1"></i>¿No se reproduce aquí? Ábrela directo en YouTube`;
             } else if (event.data == YT.PlayerState.PAUSED) {
                 isPlaying = false; 
                 updatePlayPauseButton(); 
@@ -479,6 +501,11 @@
             currentSongInfo.classList.add('opacity-100');
             nowPlayingTitle.textContent = song.title;
             nowPlayingArtist.textContent = song.artist;
+            
+            // Mostrar y actualizar botón directo de YouTube (Fallback)
+            btnOpenYt.href = `https://www.youtube.com/watch?v=${song.ytId}`;
+            btnOpenYt.classList.remove('hidden');
+            btnOpenYt.classList.add('inline-block');
             
             // Mostrar y animar botón de compartir
             btnShare.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
@@ -581,10 +608,12 @@
             if (song.category === 'bailable') intro = "¡Levántate y baila! 💃🕺 Te dedico este temazo para llenarte de buena energía:";
             if (song.category === 'clasicos') intro = "📻 Hay clásicos que son como abrazos al alma, te dedico este con mucho cariño:";
 
-            const ytLink = `https://youtu.be/${song.ytId}`;
-            const text = `${intro}\n\n🎵 *${song.title}* - ${song.artist}\n\nEscúchala aquí: ${ytLink}\n\n¡Feliz mes del Amor y la Amistad! ✨`;
+            // Estructura OPTIMIZADA para que WhatsApp siempre detecte la miniatura del video
+            // El enlace va al final del todo, en su propia línea, utilizando api.whatsapp.com
+            const text = `${intro}\n\n🎵 *${song.title}* - ${song.artist}\n\n¡Feliz mes del Amor y la Amistad! ✨\n\nEscúchala aquí 👇\nhttps://www.youtube.com/watch?v=${song.ytId}`;
             
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            // api.whatsapp es la mejor práctica actual (frente a wa.me) para asegurar compatibilidad de caracteres y emojis en PC y móvil
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
         }
 
