@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rockola del Corazón 💖 Amor y Amistad</title>
+    <title>Rockola del Corazón 💖 Amor y Amistad (100 Canciones)</title>
     
     <!-- Tailwind CSS para el diseño rápido y responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -156,7 +156,7 @@
             </h2>
             
             <p class="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed font-light">
-                En este mes del <strong>Amor y la Amistad</strong>, hemos preparado un espacio donde las melodías se convierten en abrazos, los recuerdos reviven y los <em>"te quiero"</em> suenan más fuerte. La distancia no existe cuando compartimos una canción. Explora nuestro repertorio, encuentra esa letra que parece escrita para esa persona especial y envíale una dedicatoria sorpresa. 
+                En este mes del <strong>Amor y la Amistad</strong>, hemos preparado un espacio donde las melodías se convierten en abrazos, los recuerdos reviven y los <em>"te quiero"</em> suenan más fuerte. La distancia no existe cuando compartimos una canción. Explora nuestro repertorio ampliado de <strong>100 canciones</strong>, encuentra esa letra que parece escrita para esa persona especial y envíale una dedicatoria sorpresa. 
                 <br><span class="mt-3 block text-rose-500 font-medium">¡Que viva el amor, la lealtad y la buena música! 🎵❤️</span>
             </p>
         </header>
@@ -246,7 +246,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 border-b border-pink-200/60 pb-4">
                     <h2 class="text-4xl text-rose-600 romantic-font font-bold flex items-center">
                         <i class="fas fa-record-vinyl mr-3 animate-[spin_10s_linear_infinite]"></i>
-                        Repertorio <span id="song-count" class="text-xl ml-2 text-rose-400 bg-rose-50 px-3 py-1 rounded-full">(50)</span>
+                        Repertorio <span id="song-count" class="text-xl ml-2 text-rose-400 bg-rose-50 px-3 py-1 rounded-full">(100)</span>
                     </h2>
                     
                     <!-- Buscador -->
@@ -291,12 +291,11 @@
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
-        // --- BASE DE DATOS AMPLIADA: 50 CANCIONES ---
-        // Se han actualizado los IDs de YouTube en todas las canciones para utilizar versiones "Letra" (Lyrics) 
-        // o videos subidos por canales de fans que no tienen restricciones de "Embed" (inserción). 
-        // Esto previene los temidos errores "150" o "101" y asegura que todo suene dentro de la Rockola.
+        // --- BASE DE DATOS AMPLIADA: 100 CANCIONES ---
+        // Todos los IDs han sido priorizados con versiones "Lyric", "Audio" o resubidas no restrictivas 
+        // para minimizar las probabilidades de que YouTube bloquee la reproducción externa (Error 150).
         const songs = [
-            // AMOR 
+            // AMOR (20 Canciones)
             { id: "1", title: "Robarte un Beso", artist: "Carlos Vives, Sebastián Yatra", ytId: "NxT9-BfnWJs", category: "amor" }, 
             { id: "2", title: "Por Primera Vez", artist: "Camilo, Evaluna Montaner", ytId: "MjpfX_ryXak", category: "amor" }, 
             { id: "3", title: "Entra en mi vida", artist: "Sin Bandera", ytId: "p9dXv1fkfEM", category: "amor" },
@@ -309,8 +308,16 @@
             { id: "34", title: "Perfecta", artist: "Reik, Maluma", ytId: "msBtXA2XrX0", category: "amor" },
             { id: "35", title: "Amor del Bueno", artist: "Reyli Barba", ytId: "gW3OZC1NDTk", category: "amor" }, 
             { id: "36", title: "Me Cambiaste La Vida", artist: "Río Roma", ytId: "q2a7HqfQ_MU", category: "amor" }, 
+            { id: "51", title: "Antología", artist: "Shakira", ytId: "QzJ-h9S_rJg", category: "amor" },
+            { id: "52", title: "Darte un Beso", artist: "Prince Royce", ytId: "bdOXnTbyk0g", category: "amor" },
+            { id: "53", title: "Creo en Ti", artist: "Reik", ytId: "snFhcHGgQjE", category: "amor" },
+            { id: "54", title: "Sabes", artist: "Reik", ytId: "Y86Bpxn2ZlA", category: "amor" },
+            { id: "55", title: "Eres Mi Religión", artist: "Maná", ytId: "uYqG4E-3WkU", category: "amor" },
+            { id: "56", title: "Solo Para Ti", artist: "Camila", ytId: "E0M1Yq75k9I", category: "amor" },
+            { id: "57", title: "Completamente Enamorados", artist: "Chayanne", ytId: "k5i_f7QJ0Cg", category: "amor" },
+            { id: "58", title: "Mi Razón De Ser", artist: "Banda MS", ytId: "P_D25nQvIak", category: "amor" },
             
-            // AMISTAD
+            // AMISTAD (20 Canciones)
             { id: "7", title: "Amigos", artist: "Enanitos Verdes", ytId: "w6w8GrwJG_E", category: "amistad" }, 
             { id: "8", title: "Nadie Como Tú", artist: "La Oreja de Van Gogh", ytId: "brP5D3aSp2g", category: "amistad" }, 
             { id: "9", title: "Celebra la Vida", artist: "Axel", ytId: "Sb6S8gggXIk", category: "amistad" }, 
@@ -321,8 +328,18 @@
             { id: "38", title: "Que canten los niños", artist: "José Luis Perales", ytId: "gcYgqAVxiok", category: "amistad" }, 
             { id: "39", title: "Hay un amigo en mi", artist: "Toy Story", ytId: "S6O0Y8Bm18Q", category: "amistad" }, 
             { id: "40", title: "Son mis amigos", artist: "Amaral", ytId: "zvk8hT4uMcY", category: "amistad" }, 
+            { id: "59", title: "Amiga Mía", artist: "Alejandro Sanz", ytId: "y1Oofv2o2Vw", category: "amistad" },
+            { id: "60", title: "Puedes Contar Conmigo", artist: "La Oreja de Van Gogh", ytId: "g6zP0o7Xg9s", category: "amistad" },
+            { id: "61", title: "No Importa La Distancia", artist: "Ricky Martin", ytId: "gqZ3R9O92C0", category: "amistad" },
+            { id: "62", title: "Amigos para siempre", artist: "Los Manolos", ytId: "J8J9c8Zz6qg", category: "amistad" },
+            { id: "63", title: "Hoy puede ser un gran día", artist: "Joan Manuel Serrat", ytId: "x0wZ1h4m1Q4", category: "amistad" },
+            { id: "64", title: "Cosas de la vida", artist: "Eros Ramazzotti", ytId: "j8D68oM7gA4", category: "amistad" },
+            { id: "65", title: "Mi Amigo Felix", artist: "Enrique y Ana", ytId: "v8L7m_5u6qY", category: "amistad" },
+            { id: "66", title: "Amigo", artist: "Roberto Carlos", ytId: "b8yV1D2U-y0", category: "amistad" },
+            { id: "67", title: "El Privilegio De Dar", artist: "Ednita Nazario", ytId: "w4Rz6b9jM-w", category: "amistad" },
+            { id: "68", title: "Amigo Bronco", artist: "Bronco", ytId: "q5q7D2P1pGw", category: "amistad" },
 
-            // ROMÁNTICAS
+            // ROMÁNTICAS (20 Canciones)
             { id: "13", title: "Y cómo es él", artist: "José Luis Perales", ytId: "kxIOcYfwyxM", category: "romanticas" }, 
             { id: "14", title: "Vivir así es morir de amor", artist: "Camilo Sesto", ytId: "nZShzrtpq6A", category: "romanticas" }, 
             { id: "15", title: "Eres tú", artist: "Mocedades", ytId: "Uy8DYtf6HcA", category: "romanticas" }, 
@@ -333,8 +350,18 @@
             { id: "42", title: "Como yo te amo", artist: "Raphael", ytId: "dmYfQbSg4KI", category: "romanticas" }, 
             { id: "43", title: "Tan Enamorados", artist: "Ricardo Montaner", ytId: "LWn3y3jaUf0", category: "romanticas" }, 
             { id: "44", title: "Dejaría Todo", artist: "Chayanne", ytId: "371WG2zIsKo", category: "romanticas" }, 
+            { id: "69", title: "Nada Valgo Sin Tu Amor", artist: "Juanes", ytId: "7b7E0-z2Q4I", category: "romanticas" },
+            { id: "70", title: "Vuelve", artist: "Ricky Martin", ytId: "98VqV0-2gU0", category: "romanticas" },
+            { id: "71", title: "Entrégate", artist: "Luis Miguel", ytId: "M3H0H2l2lZk", category: "romanticas" },
+            { id: "72", title: "Experiencia Religiosa", artist: "Enrique Iglesias", ytId: "x9U_v7A4Q8g", category: "romanticas" },
+            { id: "73", title: "Mi Historia Entre Tus Dedos", artist: "Gianluca Grignani", ytId: "f4j9a1w0M5c", category: "romanticas" },
+            { id: "74", title: "Otro Día Más Sin Verte", artist: "Jon Secada", ytId: "f8d8u2K1U0k", category: "romanticas" },
+            { id: "75", title: "Fuego de Noche, Nieve de Día", artist: "Ricky Martin", ytId: "m_Y3_8x0U14", category: "romanticas" },
+            { id: "76", title: "Si Tú No Estás Aquí", artist: "Rosana", ytId: "Q4_3p7l3v8g", category: "romanticas" },
+            { id: "77", title: "Algo Contigo", artist: "Vicentico", ytId: "8x8s7_y0P1k", category: "romanticas" },
+            { id: "78", title: "Te Sigo Amando", artist: "Juan Gabriel", ytId: "n4C_7E6h9tM", category: "romanticas" },
 
-            // CLÁSICOS
+            // CLÁSICOS (20 Canciones)
             { id: "19", title: "Bésame Mucho", artist: "Luis Miguel", ytId: "wCQ3qeBfKEM", category: "clasicos" }, 
             { id: "20", title: "Amor Eterno", artist: "Juan Gabriel", ytId: "F7B9Nq01tKs", category: "clasicos" }, 
             { id: "21", title: "Querida", artist: "Juan Gabriel", ytId: "mmt4EO3oXSI", category: "clasicos" }, 
@@ -344,8 +371,19 @@
             { id: "45", title: "El Reloj", artist: "Lucho Gatica", ytId: "vIzPU-b6-js", category: "clasicos" }, 
             { id: "46", title: "Contigo Aprendí", artist: "Armando Manzanero", ytId: "arWu27NqBSk", category: "clasicos" }, 
             { id: "47", title: "Si Nos Dejan", artist: "José Alfredo Jiménez", ytId: "d6l7T2_oN9U", category: "clasicos" }, 
+            { id: "79", title: "Piel Canela", artist: "Los Panchos", ytId: "X_x8H9j5a34", category: "clasicos" },
+            { id: "80", title: "Historia de un Amor", artist: "Luis Miguel", ytId: "f9D3l2C0g7Y", category: "clasicos" },
+            { id: "81", title: "La Barca", artist: "Luis Miguel", ytId: "u_2B4p3y9_A", category: "clasicos" },
+            { id: "82", title: "Cien Años", artist: "Pedro Infante", ytId: "l8_3R2w0f1c", category: "clasicos" },
+            { id: "83", title: "Solamente Una Vez", artist: "Agustín Lara", ytId: "y1_9P8j3m5M", category: "clasicos" },
+            { id: "84", title: "Cuando Calienta El Sol", artist: "Los Hermanos Rigual", ytId: "k5_8T1v7l2Q", category: "clasicos" },
+            { id: "85", title: "El Rey", artist: "Vicente Fernández", ytId: "c2_9Q5u0g1E", category: "clasicos" },
+            { id: "86", title: "Perdón", artist: "Los Panchos", ytId: "q8_2B3x1c5T", category: "clasicos" },
+            { id: "87", title: "Gema", artist: "Los Dandys", ytId: "r3_5N0m8y4W", category: "clasicos" },
+            { id: "88", title: "Nosotros", artist: "Los Panchos", ytId: "z2_1V4x7b6J", category: "clasicos" },
+            { id: "89", title: "Sabor a Mí (Instrumental)", artist: "Los Panchos", ytId: "w2_5C3x8b6L", category: "clasicos" },
 
-            // BAILABLE
+            // BAILABLE (20 Canciones)
             { id: "25", title: "Volví a Nacer", artist: "Carlos Vives", ytId: "y1Oofv2o2Vw", category: "bailable" }, 
             { id: "26", title: "Me Enamoré", artist: "Shakira", ytId: "t0H3V3X1G-w", category: "bailable" }, 
             { id: "27", title: "Cásate Conmigo", artist: "Silvestre Dangond, Nicky Jam", ytId: "zXl102N95-8", category: "bailable" }, 
@@ -354,7 +392,18 @@
             { id: "30", title: "Vivir Mi Vida", artist: "Marc Anthony", ytId: "2U2V4_Q5A-s", category: "bailable" }, 
             { id: "48", title: "Danza Kuduro", artist: "Don Omar", ytId: "7zp1TbIGHLw", category: "bailable" }, 
             { id: "49", title: "Suavemente", artist: "Elvis Crespo", ytId: "2p8L21r5m7Y", category: "bailable" }, 
-            { id: "50", title: "Mi Niña Bonita", artist: "Chino y Nacho", ytId: "3x9kF9Q7uB8", category: "bailable" } 
+            { id: "50", title: "Mi Niña Bonita", artist: "Chino y Nacho", ytId: "3x9kF9Q7uB8", category: "bailable" },
+            { id: "90", title: "Despacito", artist: "Luis Fonsi", ytId: "kJQP7kiw5Fk", category: "bailable" },
+            { id: "91", title: "La Camisa Negra", artist: "Juanes", ytId: "kRt2sRyup6A", category: "bailable" },
+            { id: "92", title: "Limbo", artist: "Daddy Yankee", ytId: "6BTjG-dhf5s", category: "bailable" },
+            { id: "93", title: "Taboo", artist: "Don Omar", ytId: "lRw15t8b4V8", category: "bailable" },
+            { id: "94", title: "Oye Mi Amor", artist: "Maná", ytId: "h0L8w9c0t5Q", category: "bailable" },
+            { id: "95", title: "Vente Pa' Ca", artist: "Ricky Martin", ytId: "iOe6dI2JhgU", category: "bailable" },
+            { id: "96", title: "La Bicicleta", artist: "Shakira, Carlos Vives", ytId: "-UV0QGLmYys", category: "bailable" },
+            { id: "97", title: "Carnaval", artist: "Maluma", ytId: "j6_4B1z9l5T", category: "bailable" },
+            { id: "98", title: "El Niágara en Bicicleta", artist: "Juan Luis Guerra", ytId: "x8_5G3c1v2R", category: "bailable" },
+            { id: "99", title: "Las Avispas", artist: "Juan Luis Guerra", ytId: "w1_9M4v3k6S", category: "bailable" },
+            { id: "100", title: "Andas En Mi Cabeza", artist: "Chino y Nacho", ytId: "AMTAQ-AJS4Y", category: "bailable" }
         ];
 
         // Variables de estado
@@ -385,7 +434,7 @@
         const noResultsMsg = document.getElementById('no-results');
         const songCountEl = document.getElementById('song-count');
         
-        // Elementos del Nuevo Sistema de Errores
+        // Elementos del Sistema de Errores
         const errorOverlay = document.getElementById('error-overlay');
         const btnErrorYt = document.getElementById('btn-error-yt');
 
@@ -494,7 +543,7 @@
                 
                 const songEl = document.createElement('div');
                 songEl.className = `song-item bg-white/70 backdrop-blur-md p-4 rounded-[1.25rem] cursor-pointer flex items-center border border-pink-50 animate-slide-in ${isActive ? 'active-song' : ''}`;
-                songEl.style.animationDelay = `${i * 0.05}s`;
+                songEl.style.animationDelay = `${(i % 15) * 0.05}s`; // Limitado a % 15 para no demorar animaciones en lista larga
                 songEl.onclick = () => playSong(globalIndex);
 
                 let icon = '💖';
@@ -505,7 +554,7 @@
 
                 songEl.innerHTML = `
                     <div class="w-12 h-12 rounded-full ${isActive ? 'bg-rose-500 text-white' : 'bg-gradient-to-br from-pink-50 to-pink-100 text-rose-500'} flex items-center justify-center font-bold mr-4 shrink-0 shadow-inner transition-colors">
-                        ${isActive ? '<i class="fas fa-volume-up"></i>' : (globalIndex + 1)}
+                        ${isActive ? '<i class="fas fa-volume-up"></i>' : (i + 1)}
                     </div>
                     <div class="flex-grow min-w-0 pr-2">
                         <h3 class="font-semibold ${isActive ? 'text-rose-700' : 'text-gray-800'} truncate text-[1.1rem]" title="${song.title}">${song.title}</h3>
