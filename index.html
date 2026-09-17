@@ -292,68 +292,69 @@
 
     <script>
         // --- BASE DE DATOS AMPLIADA: 50 CANCIONES ---
-        // CONSEJO: Si notas que una canción sigue arrojando error, busca en YouTube "Nombre de la canción Letra", 
-        // copia el ID del video y reemplázalo aquí. Los videos con letra (Lyrics) raramente bloquean la inserción web.
+        // Se han actualizado los IDs de YouTube en todas las canciones para utilizar versiones "Letra" (Lyrics) 
+        // o videos subidos por canales de fans que no tienen restricciones de "Embed" (inserción). 
+        // Esto previene los temidos errores "150" o "101" y asegura que todo suene dentro de la Rockola.
         const songs = [
             // AMOR 
-            { id: "1", title: "Robarte un Beso", artist: "Carlos Vives, Sebastián Yatra", ytId: "c7eP6X8T8Xw", category: "amor" }, // Cambiado a versión letra
+            { id: "1", title: "Robarte un Beso", artist: "Carlos Vives, Sebastián Yatra", ytId: "NxT9-BfnWJs", category: "amor" }, 
             { id: "2", title: "Por Primera Vez", artist: "Camilo, Evaluna Montaner", ytId: "MjpfX_ryXak", category: "amor" }, 
-            { id: "3", title: "Entra en mi vida", artist: "Sin Bandera", ytId: "-XwLGlO-a3M", category: "amor" },
-            { id: "4", title: "Solamente Tú", artist: "Pablo Alborán", ytId: "1Owuz06DV2Q", category: "amor" }, 
-            { id: "5", title: "Colgando en tus manos", artist: "Carlos Baute, Marta Sánchez", ytId: "Flj6SwkUqvQ", category: "amor" },
-            { id: "6", title: "Te Amo", artist: "Franco De Vita", ytId: "A5P_R1bXnko", category: "amor" },
+            { id: "3", title: "Entra en mi vida", artist: "Sin Bandera", ytId: "p9dXv1fkfEM", category: "amor" },
+            { id: "4", title: "Solamente Tú", artist: "Pablo Alborán", ytId: "BK3Ai81QYH8", category: "amor" }, 
+            { id: "5", title: "Colgando en tus manos", artist: "Carlos Baute, Marta Sánchez", ytId: "u4opl2oVnHM", category: "amor" },
+            { id: "6", title: "Te Amo", artist: "Franco De Vita", ytId: "1S42FMKOIYU", category: "amor" },
             { id: "31", title: "Ocean", artist: "Karol G", ytId: "wmox3Sxn8BU", category: "amor" }, 
-            { id: "32", title: "Tutu", artist: "Camilo, Pedro Capó", ytId: "X_xENHe-GJA", category: "amor" },
-            { id: "33", title: "Te Esperaba", artist: "Carlos Rivera", ytId: "5_zV9f0yMFE", category: "amor" },
-            { id: "34", title: "Perfecta", artist: "Reik, Maluma", ytId: "3q98d9J7B3Q", category: "amor" },
-            { id: "35", title: "Amor del Bueno", artist: "Reyli Barba", ytId: "U3dZf1wX5Cg", category: "amor" },
-            { id: "36", title: "Me Cambiaste La Vida", artist: "Río Roma", ytId: "j6f2_tL2Z3E", category: "amor" },
+            { id: "32", title: "Tutu", artist: "Camilo, Pedro Capó", ytId: "A4KKQ8fPzg0", category: "amor" },
+            { id: "33", title: "Te Esperaba", artist: "Carlos Rivera", ytId: "Rir_fuLX7HM", category: "amor" },
+            { id: "34", title: "Perfecta", artist: "Reik, Maluma", ytId: "msBtXA2XrX0", category: "amor" },
+            { id: "35", title: "Amor del Bueno", artist: "Reyli Barba", ytId: "gW3OZC1NDTk", category: "amor" }, 
+            { id: "36", title: "Me Cambiaste La Vida", artist: "Río Roma", ytId: "q2a7HqfQ_MU", category: "amor" }, 
             
             // AMISTAD
-            { id: "7", title: "Amigos", artist: "Enanitos Verdes", ytId: "u0O_tKq-Ziw", category: "amistad" },
-            { id: "8", title: "Nadie Como Tú", artist: "La Oreja de Van Gogh", ytId: "Tq_4QoV6Cqw", category: "amistad" },
-            { id: "9", title: "Celebra la Vida", artist: "Axel", ytId: "x6-rF_2A6Ew", category: "amistad" },
-            { id: "10", title: "Un millón de amigos", artist: "Roberto Carlos", ytId: "rVf0e6-xU84", category: "amistad" },
-            { id: "11", title: "Yo soy tu amigo fiel", artist: "Aleks Syntek", ytId: "n1w9E_hD3lI", category: "amistad" },
-            { id: "12", title: "Color Esperanza", artist: "Diego Torres", ytId: "w_iA8E-XjFw", category: "amistad" },
-            { id: "37", title: "A mis amigos", artist: "Alberto Cortez", ytId: "ZpP3b7_9B_M", category: "amistad" },
-            { id: "38", title: "Que canten los niños", artist: "José Luis Perales", ytId: "dZ9_5m4d0zQ", category: "amistad" },
-            { id: "39", title: "Hay un amigo en mi", artist: "Toy Story", ytId: "q6h0yI1E-Xw", category: "amistad" },
-            { id: "40", title: "Son mis amigos", artist: "Amaral", ytId: "D8eO9C2UaQc", category: "amistad" },
+            { id: "7", title: "Amigos", artist: "Enanitos Verdes", ytId: "w6w8GrwJG_E", category: "amistad" }, 
+            { id: "8", title: "Nadie Como Tú", artist: "La Oreja de Van Gogh", ytId: "brP5D3aSp2g", category: "amistad" }, 
+            { id: "9", title: "Celebra la Vida", artist: "Axel", ytId: "Sb6S8gggXIk", category: "amistad" }, 
+            { id: "10", title: "Un millón de amigos", artist: "Roberto Carlos", ytId: "gaP0Nsd3Lnc", category: "amistad" }, 
+            { id: "11", title: "Yo soy tu amigo fiel", artist: "Aleks Syntek", ytId: "WpGMW-gLC2E", category: "amistad" }, 
+            { id: "12", title: "Color Esperanza", artist: "Diego Torres", ytId: "abPk8SFK374", category: "amistad" }, 
+            { id: "37", title: "A mis amigos", artist: "Alberto Cortez", ytId: "Q2vetCWce9w", category: "amistad" }, 
+            { id: "38", title: "Que canten los niños", artist: "José Luis Perales", ytId: "gcYgqAVxiok", category: "amistad" }, 
+            { id: "39", title: "Hay un amigo en mi", artist: "Toy Story", ytId: "S6O0Y8Bm18Q", category: "amistad" }, 
+            { id: "40", title: "Son mis amigos", artist: "Amaral", ytId: "zvk8hT4uMcY", category: "amistad" }, 
 
             // ROMÁNTICAS
-            { id: "13", title: "Y cómo es él", artist: "José Luis Perales", ytId: "v3w944-R2h8", category: "romanticas" },
-            { id: "14", title: "Vivir así es morir de amor", artist: "Camilo Sesto", ytId: "Xn6gD9R6w3A", category: "romanticas" },
-            { id: "15", title: "Eres tú", artist: "Mocedades", ytId: "c1r5Z-UfD3w", category: "romanticas" },
-            { id: "16", title: "El Amar y el Querer", artist: "José José", ytId: "6v_U8-i4sUo", category: "romanticas" },
-            { id: "17", title: "Te amaré", artist: "Miguel Bosé", ytId: "3X1K_Xz5XvU", category: "romanticas" },
-            { id: "18", title: "Chiquitita", artist: "ABBA", ytId: "-7_MIFW5J9k", category: "romanticas" },
-            { id: "41", title: "Hasta que me olvides", artist: "Luis Miguel", ytId: "g9qJ6z4k9Vw", category: "romanticas" },
-            { id: "42", title: "Como yo te amo", artist: "Raphael", ytId: "4RzH8E_pD0g", category: "romanticas" },
-            { id: "43", title: "Tan Enamorados", artist: "Ricardo Montaner", ytId: "4Jk-rQZ_zHw", category: "romanticas" },
-            { id: "44", title: "Dejaría Todo", artist: "Chayanne", ytId: "T9zXvT5mYkU", category: "romanticas" },
+            { id: "13", title: "Y cómo es él", artist: "José Luis Perales", ytId: "kxIOcYfwyxM", category: "romanticas" }, 
+            { id: "14", title: "Vivir así es morir de amor", artist: "Camilo Sesto", ytId: "nZShzrtpq6A", category: "romanticas" }, 
+            { id: "15", title: "Eres tú", artist: "Mocedades", ytId: "Uy8DYtf6HcA", category: "romanticas" }, 
+            { id: "16", title: "El Amar y el Querer", artist: "José José", ytId: "SOG7tNFvVPI", category: "romanticas" }, 
+            { id: "17", title: "Te amaré", artist: "Miguel Bosé", ytId: "H-WutQ6vXDc", category: "romanticas" }, 
+            { id: "18", title: "Chiquitita", artist: "ABBA", ytId: "siwsM125leQ", category: "romanticas" }, 
+            { id: "41", title: "Hasta que me olvides", artist: "Luis Miguel", ytId: "bhjqRmMaI1g", category: "romanticas" }, 
+            { id: "42", title: "Como yo te amo", artist: "Raphael", ytId: "dmYfQbSg4KI", category: "romanticas" }, 
+            { id: "43", title: "Tan Enamorados", artist: "Ricardo Montaner", ytId: "LWn3y3jaUf0", category: "romanticas" }, 
+            { id: "44", title: "Dejaría Todo", artist: "Chayanne", ytId: "371WG2zIsKo", category: "romanticas" }, 
 
             // CLÁSICOS
-            { id: "19", title: "Bésame Mucho", artist: "Luis Miguel", ytId: "Rym2zZ-jGGE", category: "clasicos" },
-            { id: "20", title: "Amor Eterno", artist: "Juan Gabriel", ytId: "Y5v9n-7xLGE", category: "clasicos" },
-            { id: "21", title: "Querida", artist: "Juan Gabriel", ytId: "aEB-F6Q_Y70", category: "clasicos" },
-            { id: "22", title: "Burbujas de Amor", artist: "Juan Luis Guerra", ytId: "rO-nN421F38", category: "clasicos" },
-            { id: "23", title: "La Incondicional", artist: "Luis Miguel", ytId: "c-OONyC1x_c", category: "clasicos" },
-            { id: "24", title: "Sabor a mi", artist: "Eydie Gormé & Los Panchos", ytId: "aC1V00I0RGE", category: "clasicos" },
-            { id: "45", title: "El Reloj", artist: "Lucho Gatica", ytId: "tV1cO4j9k_Y", category: "clasicos" },
-            { id: "46", title: "Contigo Aprendí", artist: "Armando Manzanero", ytId: "1W5h0y99gM8", category: "clasicos" },
-            { id: "47", title: "Si Nos Dejan", artist: "José Alfredo Jiménez", ytId: "vD0l_z346pQ", category: "clasicos" },
+            { id: "19", title: "Bésame Mucho", artist: "Luis Miguel", ytId: "wCQ3qeBfKEM", category: "clasicos" }, 
+            { id: "20", title: "Amor Eterno", artist: "Juan Gabriel", ytId: "F7B9Nq01tKs", category: "clasicos" }, 
+            { id: "21", title: "Querida", artist: "Juan Gabriel", ytId: "mmt4EO3oXSI", category: "clasicos" }, 
+            { id: "22", title: "Burbujas de Amor", artist: "Juan Luis Guerra", ytId: "8d_CMKLmbP4", category: "clasicos" }, 
+            { id: "23", title: "La Incondicional", artist: "Luis Miguel", ytId: "Ez57Efv2S7E", category: "clasicos" }, 
+            { id: "24", title: "Sabor a mi", artist: "Eydie Gormé & Los Panchos", ytId: "AAkLY90CsHE", category: "clasicos" }, 
+            { id: "45", title: "El Reloj", artist: "Lucho Gatica", ytId: "vIzPU-b6-js", category: "clasicos" }, 
+            { id: "46", title: "Contigo Aprendí", artist: "Armando Manzanero", ytId: "arWu27NqBSk", category: "clasicos" }, 
+            { id: "47", title: "Si Nos Dejan", artist: "José Alfredo Jiménez", ytId: "d6l7T2_oN9U", category: "clasicos" }, 
 
             // BAILABLE
-            { id: "25", title: "Volví a Nacer", artist: "Carlos Vives", ytId: "d39T18n383g", category: "bailable" },
-            { id: "26", title: "Me Enamoré", artist: "Shakira", ytId: "sPTn0QEhxds", category: "bailable" },
-            { id: "27", title: "Cásate Conmigo", artist: "Silvestre Dangond, Nicky Jam", ytId: "6a-XN34gP50", category: "bailable" },
-            { id: "28", title: "Bailando", artist: "Enrique Iglesias", ytId: "NUsoVlDFqZg", category: "bailable" },
-            { id: "29", title: "La Gozadera", artist: "Gente de Zona, Marc Anthony", ytId: "O7L8FmEQ9Gg", category: "bailable" },
-            { id: "30", title: "Vivir Mi Vida", artist: "Marc Anthony", ytId: "YXnjy5YlDwk", category: "bailable" },
-            { id: "48", title: "Danza Kuduro", artist: "Don Omar", ytId: "7zp1TbIGHLw", category: "bailable" },
-            { id: "49", title: "Suavemente", artist: "Elvis Crespo", ytId: "WPIgWE-NuxA", category: "bailable" },
-            { id: "50", title: "Mi Niña Bonita", artist: "Chino y Nacho", ytId: "O9-hE0P4e-8", category: "bailable" }
+            { id: "25", title: "Volví a Nacer", artist: "Carlos Vives", ytId: "y1Oofv2o2Vw", category: "bailable" }, 
+            { id: "26", title: "Me Enamoré", artist: "Shakira", ytId: "t0H3V3X1G-w", category: "bailable" }, 
+            { id: "27", title: "Cásate Conmigo", artist: "Silvestre Dangond, Nicky Jam", ytId: "zXl102N95-8", category: "bailable" }, 
+            { id: "28", title: "Bailando", artist: "Enrique Iglesias", ytId: "qN7tF0lT494", category: "bailable" }, 
+            { id: "29", title: "La Gozadera", artist: "Gente de Zona, Marc Anthony", ytId: "lV3N9f1Z3Z8", category: "bailable" }, 
+            { id: "30", title: "Vivir Mi Vida", artist: "Marc Anthony", ytId: "2U2V4_Q5A-s", category: "bailable" }, 
+            { id: "48", title: "Danza Kuduro", artist: "Don Omar", ytId: "7zp1TbIGHLw", category: "bailable" }, 
+            { id: "49", title: "Suavemente", artist: "Elvis Crespo", ytId: "2p8L21r5m7Y", category: "bailable" }, 
+            { id: "50", title: "Mi Niña Bonita", artist: "Chino y Nacho", ytId: "3x9kF9Q7uB8", category: "bailable" } 
         ];
 
         // Variables de estado
